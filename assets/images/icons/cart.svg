@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="42.467" height="36.121" viewBox="0 0 42.467 36.121">
+  <g id="Groupe_96" data-name="Groupe 96" transform="translate(-1409.533 -26)">
+    <g id="supermarket" transform="translate(1409.533 33.849)">
+      <path id="Tracé_1" data-name="Tracé 1" d="M10.364,18.849H27.455a.943.943,0,0,0,.906-.683l3.77-13.194a.942.942,0,0,0-.906-1.2H8.19L7.517.738A.943.943,0,0,0,6.6,0H.942a.942.942,0,0,0,0,1.885h4.9L9.243,17.2a2.827,2.827,0,0,0,1.123,5.421H27.455a.942.942,0,1,0,0-1.885H10.366a.942.942,0,0,1,0-1.885ZM29.976,5.655,26.744,16.964H11.122L8.609,5.655Zm0,0" transform="translate(0 0)" fill="#777"/>
+      <path id="Tracé_2" data-name="Tracé 2" d="M150,362.827A2.827,2.827,0,1,0,152.827,360,2.83,2.83,0,0,0,150,362.827Zm2.827-.942a.942.942,0,1,1-.942.942A.944.944,0,0,1,152.827,361.885Zm0,0" transform="translate(-140.576 -337.382)" fill="#777"/>
+      <path id="Tracé_3" data-name="Tracé 3" d="M362,362.827A2.827,2.827,0,1,0,364.827,360,2.83,2.83,0,0,0,362,362.827Zm2.827-.942a.942.942,0,1,1-.942.942A.944.944,0,0,1,364.827,361.885Zm0,0" transform="translate(-339.256 -337.382)" fill="#777"/>
+    </g>
+    <g id="Ellipse_2" data-name="Ellipse 2" transform="translate(1433 26)" fill="#ff2600" stroke="#fff" stroke-width="1">
+      <circle cx="9.5" cy="9.5" r="9.5" stroke="none"/>
+      <circle cx="9.5" cy="9.5" r="9" fill="none"/>
+    </g>
+    <text id="_2" data-name="2" transform="translate(1439 40)" fill="#fff" font-size="12" font-family="Poppins-Regular, Poppins"><tspan x="0" y="0">2</tspan></text>
+  </g>
+</svg>

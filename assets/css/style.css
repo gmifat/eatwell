@@ -1,0 +1,364 @@
+/***general***/
+body {
+    font-family: 'lato', sans-serif;
+    margin: auto;
+    max-width: 960px;
+}
+
+h2 {
+    text-align: center;
+    font-family: 'roboto', sans-serif;
+    margin: 0.83em 0 083em 0;
+    display: block;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+.row > *{
+    padding: 15px;
+}
+.gap {
+
+}
+
+/*******header*******/
+.header-menu {
+    text-align: right;
+    margin: 0;
+    padding-left: 0px;
+}
+
+.header-menu  li {
+     list-style-type: none;
+     display: inline;
+     margin-left: 20px;
+ }
+.menu {
+    margin: 0;
+    padding-left: 0px;
+}
+
+.menu  li {
+    list-style-type: none;
+    display: inline-block;
+    margin-left: 20px;
+    vertical-align: middle;
+}
+.menu a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: #65b68b;
+}
+.find-form input {
+    height: 30px;
+    border-radius: 5px;
+    border: #bdbdbd solid 1px;
+}
+.bottom {
+    background-color: #65b68b;
+    color: #f8f8f8;
+}
+.find-form {
+    text-align: right;
+}
+
+/*******carousel*******/
+.carousel{
+    overflow: hidden;
+    height: 334px;
+    margin: 15px 0 15px 0;
+}
+
+@keyframes carousel-animation {
+    0% { left: 0; }
+    20% { left: 0; }
+    25% { left: -100%; }
+    45% { left: -100%; }
+    50% { left: -200%; }
+    70% { left: -200%; }
+    75% { left: -300%; }
+    95% { left: -300%; }
+    100% { left: -400%; }
+}
+
+.carousel-items {
+    position: relative;
+    width: 500%;
+    height: 100%;
+    margin: 0;
+    left: 0;
+    text-align: left;
+    font-size: 0;
+    animation: 10s carousel-animation infinite;
+    display: flex;
+}
+.carousel ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.carousel-indicator {
+    bottom: 0;
+    margin: 0;
+    padding: 0;
+    width: 20%;
+    text-align: center;
+}
+
+.carousel-item{
+    width: 20%;
+    text-align: right;
+    background-color: #EAEDF2;
+}
+
+.carousel-item span {
+    color: #65b68b;
+}
+
+.carousel-item p{
+    font-family: 'Kaushan Script', sans-serif;
+}
+
+.carousel-item img {
+    /*color: #65b68b;
+    width: 100%;*/
+    height: 100%;
+}
+
+.text {
+    color: black;
+    font-size: 30px;
+    line-height: 1.5em;
+    text-shadow: 2px 2px 2px #000;
+    text-align: center;
+    position: absolute;
+    /*top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;*/
+}
+
+/*******container*******/
+.separator {
+    background-color: #b68b65 ;
+    height: 3px;
+    width: 16.66%;
+    margin-bottom: 15px;
+}
+/*******main*******/
+/*******pourquoi nos produits******/
+.purpose{
+    background-color: #f8f8f8;
+    padding: 15px;
+}
+
+h2{
+    color: #333333;
+    margin-bottom: 0px;
+}
+
+
+.purpose-item {
+    flex: 0 0 33.33%;
+}
+
+.purpose-item-title img {
+    margin-right: 15px;
+    width: auto;
+}
+/*titre*/
+.purpose-item-title {
+    display: flex;
+    align-items: center;
+}
+.purpose-item h4 {
+
+
+    font-weight: bold;
+}
+/*description*/
+.purpose-item p {
+    text-align: justify;
+    margin: 1em 0 1em 0;
+}
+
+/*******fin pourquoi nos produits******/
+
+/*******Nouveautés******/
+/*****affichage d'un produit*****/
+.product-item-container{
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    height: 100%;
+    width: 100%;
+}
+.product-item {
+
+}
+.product-thumbnail {
+    width: 100%;
+}
+
+.product-thumbnail-container {
+    flex-grow: 0;
+}
+
+.product-item-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1;
+}
+
+.favorite img{
+    color: #b66590;
+    width:auto;
+   }
+.product-item-name {
+    font-size: 17px;
+}
+.product-thumbnail-container > div {
+    /*52px = 15 padding *2 + 10 padding * 2 + border * 2*/
+    width: calc(33.33% - 52px);
+    max-width: 268px;
+    position: absolute;
+    z-index: 15;
+    text-align: right;
+    padding: 15px 15px 0 0;
+}
+
+.product-item-price, .product-item-promo {
+    width: 100%;
+    padding: 10px;
+}
+.product-item-add {
+    width: 100%;
+    text-align: center;
+    padding-bottom: 5px;
+}
+
+
+.product-item-add button {
+    width: 80%;
+    padding: 5px;
+    background-color: #65b68b;
+    color: #f8f8f8;
+    border-radius: 5px;
+    border: #f8f8f8 1px solid;
+}
+.product-item-add button i {
+    margin-right: 15px;
+}
+/**********les logos BIO ***********/
+.bio-logo {
+    background-color: #f8f8f8;
+}
+
+.symbol {
+    justify-content: center;
+}
+.logo {
+    margin-left: 40px;
+    flex: 0 0 16.66%
+}
+.logo > img {
+    width: 100%;
+}
+/*********footer******/
+/***newsletter***/
+.newsletter {
+    margin-bottom: 15px;
+}
+.newsletter-info {
+   justify-content: center;
+    text-align: center;
+}
+.newsletter-manip {
+    justify-content: center;
+}
+.newsletter-input {
+    border: #bdbdbd solid 1px;
+    padding: 10px;
+    width: 65%;
+    border-radius: 5px;
+}
+.newsletter-button{
+    background-color: #65b68b;
+    border-radius: 5px;
+    padding: 10px;
+    color: #f8f8f8;
+    border: #65b68b 1px solid;
+    margin-left: 20px;
+}
+/****information et contact****/
+footer {
+    padding: 0;
+}
+.informations {
+    background-color: #f5f5f5;
+}
+.informations {
+    justify-content: center;
+}
+.information{
+    width: 100%;
+    flex: 0 0 33.33%;
+}
+
+.information li{
+    padding: 10px;
+}
+.information img {
+    width: 24px;
+    margin-right: 20px;
+}
+.information a {
+    text-decoration: none;
+}
+.law {
+    background-color: #f5f5f5;
+    justify-content: space-between;
+}
+.law-info {
+    width: 100%;
+    margin: 0;
+}
+
+.law-images {
+    width: 100%;
+}
+
+.law-images img {
+    width: auto;
+}
+
+.footer-separator {
+    color: #bdbdbd;
+    margin: 0;
+}
+.links {
+    background-color: #f5f5f5;
+    padding: 15px;
+    justify-content: center;
+}
+.links > a {
+    padding: 0;
+    text-decoration: none;
+    color: black;
+    flex: 0 0 16.66%;
+}
+.link {
+    text-align: center;
+}
+a:hover {
+    color: #65b68b;
+}
