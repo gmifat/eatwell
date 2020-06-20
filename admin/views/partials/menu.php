@@ -14,9 +14,6 @@
                     <a class="nav-link" href="index.php?controller=origins&action=list">Origine produit</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="index.php?controller=promotions&action=list">Promotions</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="index.php?controller=recipes&action=list">Recettes</a>
                 </li>
                 <li class="nav-item">

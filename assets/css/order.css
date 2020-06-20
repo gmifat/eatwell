@@ -226,3 +226,18 @@
     margin-right: auto;
     width: 450px;
 }
+
+.user-address-billing
+{
+    display: block;
+}
+
+#user-address-invoice
+{
+    display: inline-block;
+}
+
+#user-address-invoice:checked > div.user-address-billing
+{
+    display: none;
+}

@@ -18,6 +18,11 @@ h2 {
     justify-content: space-between;
 }
 
+.gap
+{
+    padding: 15px;
+}
+
 .alert {
     position: relative;
     padding: .75rem 1.25rem;
@@ -44,18 +49,30 @@ h2 {
 header > nav
 {
     padding-top: 8px;
+    height: 100%;
+    width: 100%;
 }
 .header-menu {
-    text-align: right;
+  /*  text-align: right;
+    margin: 0;*/
+    padding-right: 15px;
+    display: flex;
+    align-items: center;
     margin: 0;
-    padding-left: 0px;
+    justify-content: flex-end;
 }
 
 .header-menu  li {
-     list-style-type: none;
+     /*list-style-type: none;
      display: inline;
-     margin-left: 20px;
+     margin-left: 20px;*/
+    padding-left: 10px;
  }
+/*
+.header-menu li:last-child{
+    display: none;
+}*/
+
 .menu {
     margin: 0;
     padding-left: 0px;
@@ -96,8 +113,8 @@ a:hover {
 [data-cart]:after {
     content: attr(data-cart);
     position: absolute;
-    top: 30%;
-    left: 70%;
+    top: 10px;
+    left: 15px;
     display: inline-block;
     text-align: center;
     background: #f28f19;
@@ -351,4 +368,23 @@ footer {
 }
 a:hover {
     color: #65b68b;
+}
+
+.cart-content
+{
+    display: none;
+}
+
+.user-account
+{
+    padding: 15px;
+}
+.user-account h2
+{
+    text-align: left;
+}
+
+.user-edit-info
+{
+    padding: 15px;
 }

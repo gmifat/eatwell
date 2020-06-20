@@ -1,3 +1,4 @@
+
 .cart-display-table
 {
     border-collapse: collapse;
@@ -15,10 +16,12 @@
     border-width: 0;
 }
 
-/*.cart-display-table tr:nth-child(even){background-color: #f2f2f2;} */
-/*
-.cart-display-table tr:hover {background-color: #ddd;}
-*/
+.deleted-product
+{
+    border-color: #b3b7bb;
+    background-color: #d6d8db;
+}
+
 .cart-display-table th {
     padding-top: 12px;
     padding-bottom: 12px;

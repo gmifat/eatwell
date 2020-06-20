@@ -30,7 +30,7 @@ $recipes = getAllRecipes();-->
             <aside class="shop-filter">
                 <div>
                     <h4>Catégorie</h4>
-                    <ul class="shop-filter-category">
+                    <ul class="shop-filter-category select">
                         <?php foreach ($categories as $category) : ?>
                             <li>
                                 <a href="index.php?p=shop&category_id=<?=$category['id']?>">
@@ -44,12 +44,12 @@ $recipes = getAllRecipes();-->
                 <div>
                     <h4>Prix</h4>
                     <span>Min</span>
-                    <input type="number" step="0.01" min="0" value="0">
+                    <input type="number" step="0.01" min="0" value="0"><br>
                     <span>Max</span>
                     <input type="number" step="0.01" min="0" value="10">
                 </div>
                 <div>
-                    <h4>Catégorie</h4>
+                    <h4>Origine</h4>
                     <ul class="shop-filter-category">
                         <?php foreach ($origins as $origin) : ?>
                             <li>
@@ -101,5 +101,3 @@ $recipes = getAllRecipes();-->
         </div>
     </section>
 </main>
-<?php
-

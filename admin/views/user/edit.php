@@ -14,6 +14,10 @@
         <input class="col-sm-9" name="email" type="email" id="email" value="<?= $user['email'] ?>">
     </div>
     <div class="form-group row">
+        <label class="col-sm-3" for="phone_number">Téléphone </label>
+        <input class="col-sm-9" name="phone_number" type="text" id="phone_number" value="<?= $user['phone_number'] ?>">
+    </div>
+    <div class="form-group row">
         <label class="col-sm-3" for="password">Mot de passe *</label>
         <input class="col-sm-9" name="password" type="password" id="password" minlength="8">
         <span class="col-sm-3 text-muted" >Minimum 8 caractères</span>

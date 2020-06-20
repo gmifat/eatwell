@@ -3,6 +3,31 @@
 
 }
 
+.product-details-info
+{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: stretch;
+    align-content: stretch;
+    flex-wrap: wrap;
+}
+.product-images, .product-details-data
+{
+    position: relative;
+    flex: 0 0 50%;
+    padding: 15px;
+}
+
+.product-images > ul
+{
+    display: flex;
+}
+.product-images > ul > li
+{
+    width: 96px;
+    padding: 10px;
+}
 .similar-products .row
 {
     justify-content: flex-start;

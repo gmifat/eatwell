@@ -31,13 +31,21 @@ function getAllActiveProducts($category_id = null, $filter = null)
     return $products;
 }
 
-function getLightProductById($id)
+function getLightProductById($id, $is_active = true)
 {
     $db = dbConnect();
-    $query = $db->prepare('SELECT product.*, unit.name unit_name, discount_type.code, discount_type.symbol FROM products product 
+    if ($is_active) {
+        $query = $db->prepare('SELECT product.*, unit.name unit_name, discount_type.code, discount_type.symbol FROM products product 
 LEFT JOIN units unit on product.unit_id = unit.id
 LEFT JOIN discount_types discount_type on product.discount_type_id = discount_type.id
 WHERE product.is_deleted = 0 AND product.id=:id');
+    }
+    else{
+        $query = $db->prepare('SELECT product.*, unit.name unit_name, discount_type.code, discount_type.symbol FROM products product 
+LEFT JOIN units unit on product.unit_id = unit.id
+LEFT JOIN discount_types discount_type on product.discount_type_id = discount_type.id
+WHERE product.id=:id');
+    }
     $query->execute([
         ':id' => $id,
     ]);

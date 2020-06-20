@@ -17,7 +17,7 @@
                     <tr>
                         <td class=""><a href="index.php?controller=orders&action=view&id=<?= $order['id']; ?>"><?= $order['id']; ?></a></td>
                         <td class=""><?= $order['first_name'].' '.$order['last_name']; ?></td>
-                        <td class=""><?= $order['order_amount']; ?></td>
+                        <td class=""><?= $order['order_amount'] / 100; ?> €</td>
                         <td class=""><?= $order['order_date']; ?></td>
                         <td class="width32"><a href="index.php?controller=orders&action=view&id=<?= $order['id']; ?>"><i class="fas fa-window-restore"></i></a></td>
                     </tr>

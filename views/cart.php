@@ -1,7 +1,7 @@
-<link rel="stylesheet" href="assets/css/cart.css">
+
 <main class="cart-display">
 <?php if ($cart_products['count'] > 0) : ?>
-    <table border class="cart-display-table" >
+    <table class="table cart-display-table" >
         <thead>
         <tr>
             <th class="cart-display-product" colspan="2">Produit</th>
@@ -19,7 +19,7 @@
             $price = $value['quantity'] * getPrice($cart_product);
             $total+= $price;
             ?>
-            <tr class="cart-display-item">
+            <tr class="cart-display-item <?= $cart_product['is_deleted'] == 1 ? 'deleted-product' : '' ;?>">
                 <td data-label="Produit" class="cart-display-product" rowspan="2">
                     <a href="index.php?p=product&id=<?= $cart_product['id'] ;?>"><img style="width: 96px;" src="assets/images/<?= !empty($cart_product['thumbnail']) ? 'product/thumbnail/'.$cart_product['thumbnail'] :  'no_image.PNG' ?>"/></a>
                 </td>
@@ -44,7 +44,7 @@
                 <td data-label="Total" class="cart-display-total" rowspan="2"><?= $price ?> €</td>
                 <td data-label="Supprimer" class="cart-display-delete" rowspan="2"><a class="cart-product-remove" href="index.php?p=cart&action=remove&product_id=<?= $cart_product['id']; ?>&refresh"><i class="fas fa-trash-alt"></i></a></td>
             </tr>
-            <tr  class="cart-display-item">
+            <tr class="cart-display-item cart-more-details <?= $cart_product['is_deleted'] == 1 ? 'deleted-product' : '' ;?>">
                 <td data-label="Produit" class="cart-display-product" >
                     <div class="product-item-promo">
                         <span><?= $cart_product['short_description']; ?></span>
@@ -63,7 +63,6 @@
                     </div>
                 </td>
             </tr>
-            <?php /*var_dump($cart_product);*/ ?>
         <?php endif;?>
     <?php endforeach; ?>
         </tbody>
@@ -98,7 +97,4 @@
 
 <?php endif; ?>
 
-<?php
-/*var_dump($cart_products);*/
-?>
 </main>

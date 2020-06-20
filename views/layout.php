@@ -13,10 +13,14 @@
     <link rel="stylesheet" href="assets/css/reset.css">
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="assets/css/product.css">
+    <link rel="stylesheet" href="assets/css/cart.css">
+    <link rel="stylesheet" href="assets/css/order.css">
     <link rel="stylesheet" href="assets/css/style-mentions-legales.css">
     <link rel="stylesheet" href="assets/css/style-politique-de-confidentialite.css">
     <link rel="stylesheet" href="assets/css/style-delete-personal.css">
     <link rel="stylesheet" href="assets/css/shop.css">
+    <link rel="stylesheet" href="assets/css/product-details.css">
+    <link rel="stylesheet" href="assets/css/mobile.css">
     <script src="https://kit.fontawesome.com/cbd946d966.js" crossorigin="anonymous"></script>
     <title>EatWell</title>
 </head>

@@ -86,7 +86,7 @@ function addUser($informations)
 function LoginUser($email, $password)
 {
     $db = dbConnect();
-    $query = $db->prepare("SELECT id, first_name, last_name, email, created_date, password, avatar, is_admin from users WHERE email = :email ");
+    $query = $db->prepare("SELECT id, first_name, last_name, email, created_date, password, avatar, is_admin, delivery_address_id, billing_address_id from users WHERE email = :email");
     if($query->execute([
         ':email' => $email
     ]))
@@ -100,6 +100,26 @@ function LoginUser($email, $password)
 
         if (password_verify($password, $result['password']))
         {
+            if ($result['delivery_address_id'] != null)
+            {
+                $query = $db->query('SELECT * from addresses WHERE id='.$result['delivery_address_id']);
+                $deliveryAddress = $query->fetch();
+                if ($deliveryAddress != false)
+                {
+                    $result['delivery_address'] = $deliveryAddress;
+                }
+            }
+
+            if ($result['billing_address_id'] != null)
+            {
+                $query = $db->query('SELECT * from addresses WHERE id='.$result['billing_address_id']);
+                $billingAddress = $query->fetch();
+                if ($billingAddress != false)
+                {
+                    $result['billing_address'] = $billingAddress;
+                }
+            }
+
             return $result;
         }
     }
@@ -110,7 +130,7 @@ function LoginUser($email, $password)
 function getUserInfoById($id)
 {
     $db = dbConnect();
-    $query = $db->prepare("SELECT id, first_name, last_name, email, phonenumber, delivery_address_id, billing_address_id from users WHERE id = :id ");
+    $query = $db->prepare("SELECT id, first_name, last_name, email, phone_number, delivery_address_id, billing_address_id from users WHERE id = :id ");
     $query->execute([ ':id' => $id ]);
     return $query->fetch();
 }
@@ -174,30 +194,91 @@ function isValidUserForUpdate($informations)
     return $return;
 }
 
-function updateUser($informations)
+function updateUser($informations, $delivery_address_id, $billing_address_id)
 {
     $db = dbConnect();
     if (empty($informations['password']))
     {
-        $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email WHERE id=:id');
+        $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email, phone_number=:phone_number, delivery_address_id=:delivery_address_id, billing_address_id=:billing_address_id WHERE id=:id');
         $result = $query->execute([
             ':id' => $informations['id'],
             ':first_name' => $informations['first_name'],
             ':last_name' => $informations['last_name'],
             ':email' => $informations['email'],
+            ':phone_number' => $informations['phone_number'],
+            ':delivery_address_id' => $delivery_address_id,
+            ':billing_address_id' => $billing_address_id,
         ]);
     }
     else
     {
-        $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email, password=:password WHERE id=:id');
+        $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email, phone_number=:phone_number, password=:password, delivery_address_id=:delivery_address_id, billing_address_id=:billing_address_id WHERE id=:id');
         $result = $query->execute([
             ':id' => $informations['id'],
             ':first_name' => $informations['first_name'],
             ':last_name' => $informations['last_name'],
             ':email' => $informations['email'],
+            ':phone_number' => $informations['phone_number'],
             ':password' => password_hash($informations['password'], PASSWORD_BCRYPT),
+            ':delivery_address_id' => $delivery_address_id,
+            ':billing_address_id' => $billing_address_id,
         ]);
     }
 
+    return $result;
+}
+
+function getUserOrders($user_id)
+{
+    $db = dbConnect();
+    $query = $db->prepare('SELECT * FROM orders WHERE orders.user_id=:user_id');
+    $query->execute([':user_id' => $user_id]);
+    $orders = $query->fetchAll();
+    return $orders;
+}
+
+function getUserOrderById($user_id, $id)
+{
+    $db = dbConnect();
+    $query = $db->prepare('SELECT orders.*, order_details.name product_name, order_details.quantity, order_details.price, products.id product_id  FROM orders
+ JOIN order_details ON order_details.order_id = orders.id
+ LEFT JOIN products ON products.id = order_details.product_id
+ WHERE orders.user_id = :user_id AND orders.id = :id');
+    $query->execute([':id' => $id, ':user_id' => $user_id]);
+    $origin = $query->fetchAll();
+    return $origin;
+}
+
+function getUserById($id)
+{
+    $result = getUserInfoById($id);
+    $db = dbConnect();
+    if ($result['delivery_address_id'] != null)
+    {
+        $query = $db->query('SELECT * from addresses WHERE id='.$result['delivery_address_id']);
+        $deliveryAddress = $query->fetch();
+        if ($deliveryAddress != false)
+        {
+            $result['delivery_address'] = $deliveryAddress;
+        }
+    }
+    else
+    {
+        $result['delivery_address'] = array('first_name' => '','last_name' => '','street_name' => '', 'complementary_address_1' => null, 'complementary_address_2' => null, 'city' => null, 'postal_code' => null, 'address-invoice' => true);
+    }
+
+    if ($result['billing_address_id'] != null)
+    {
+        $query = $db->query('SELECT * from addresses WHERE id='.$result['billing_address_id']);
+        $billingAddress = $query->fetch();
+        if ($billingAddress != false)
+        {
+            $result['billing_address'] = $billingAddress;
+        }
+    }
+    else
+    {
+        $result['billing_address'] = array('first_name' => '','last_name' => '', 'street_name' => '', 'complementary_address_1' => null, 'complementary_address_2' => null, 'city' => null, 'postal_code' => null, 'address-invoice' => true);
+    }
     return $result;
 }

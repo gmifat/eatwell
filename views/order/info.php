@@ -15,6 +15,6 @@
         <input required name="email" type="email" id="email" value="<?= $_SESSION['order_inputs']['info']['email'] ?>">
     </div>
     <div class="order-form-input">
-        <label for="phonenumber">Téléphone *</label>
-        <input required name="phonenumber" type="tel" id="phonenumber" value="<?= $_SESSION['order_inputs']['info']['phonenumber']?>">
+        <label for="phone_number">Téléphone</label>
+        <input name="phone_number" type="tel" id="phone_number" value="<?= $_SESSION['order_inputs']['info']['phone_number']?>">
     </div>

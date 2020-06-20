@@ -33,7 +33,7 @@ switch ($_GET['action']) {
     case 'edit':
         if (isset($_GET['id']) && !empty($_GET['id'])) {
             if (!isset($_SESSION['old_inputs'])) {
-                $user = getUserById($_GET['id']);
+                $user = getUserDataById($_GET['id']);
             } else {
                 $user = $_SESSION['old_inputs'];
             }
@@ -71,7 +71,7 @@ switch ($_GET['action']) {
 
     case 'delete':
         if (isset($_GET['id']) && !empty($_GET['id'])) {
-            $user = getUserById($_GET['id']);
+            $user = getUserDataById($_GET['id']);
             if ($user == false) {
                 $_SESSION['messages_ko'][] = 'Utilisateur non trouvée !';
                 header('Location:index.php?controller=users&action=list');
@@ -81,6 +81,14 @@ switch ($_GET['action']) {
             $pageTitle = 'Supprimer un utilisateur';
             $view = 'views/user/delete.php';
         } else if (isset($_POST['id']) && !empty($_POST['id'])) {
+
+            if ($_POST['id'] == $_SESSION['user_id'])
+            {
+                $_SESSION['messages_ko'][] = "Vous ne pouvez pas supprimer votre compte";
+                header('Location:index.php?controller=users&action=list');
+                exit;
+            }
+
             $delete = deleteUser($_POST);
             if ($delete == true) {
                 $_SESSION['messages_ok'][] = 'Utilisateur supprimée !';

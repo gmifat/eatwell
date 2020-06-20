@@ -11,22 +11,22 @@
     <input required name="last_name" type="text" id="last_name" value="<?= $_SESSION['order_inputs']['invoice']['last_name'] ?>">
 </div>
 <div class="order-form-input">
-    <label for="address">Adresse *</label>
-    <input required name="address" type="text" id="address" value="<?= $_SESSION['order_inputs']['invoice']['address'] ?>">
+    <label for="street_name">Adresse *</label>
+    <input required name="street_name" type="text" id="street_name" value="<?= $_SESSION['order_inputs']['invoice']['street_name'] ?>">
 </div>
 <div class="order-form-input">
-    <label for="additional-address">Complément d'adresse</label>
-    <input placeholder="complément d'adresse" name="additional-address" type="text" id="additional-address" value="<?= $_SESSION['order_inputs']['invoice']['additional-address'] ?>">
+    <label for="complementary_address_1">Complément d'adresse</label>
+    <input placeholder="complément d'adresse" name="complementary_address_1" type="text" id="complementary_address_1" value="<?= $_SESSION['order_inputs']['invoice']['complementary_address_1'] ?>">
 </div>
 <div class="order-form-input">
-    <label for="additional-address2"></label>
-    <input placeholder="complément d'adresse 2" name="additional-address2" type="text" id="additional-address2" value="<?= $_SESSION['order_inputs']['invoice']['additional-address2'] ?>">
+    <label for="complementary_address_2"></label>
+    <input placeholder="complément d'adresse 2" name="complementary_address_2" type="text" id="complementary_address_2" value="<?= $_SESSION['order_inputs']['invoice']['complementary_address_2'] ?>">
 </div>
 <div class="order-form-input">
     <label for="city">Ville *</label>
     <input required name="city" type="text" id="city" value="<?= $_SESSION['order_inputs']['invoice']['city'] ?>">
 </div>
 <div class="order-form-input">
-    <label for="postal-code">Code postale *</label>
-    <input required name="postal-code" type="tel" id="postal-code" value="<?= $_SESSION['order_inputs']['invoice']['postal-code'] ?>">
+    <label for="postal_code">Code postale *</label>
+    <input required name="postal_code" minlength="5" maxlength="5"  type="text" id="postal_code" value="<?= $_SESSION['order_inputs']['invoice']['postal_code'] ?>">
 </div>

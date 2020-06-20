@@ -32,14 +32,9 @@ function isInfoStepValid()
         $_SESSION['order_inputs']['info']['email'] = $_POST['email'];
     }
 
-    if (!isset($_POST['phonenumber']) || empty($_POST['phonenumber']))
+    if (isset($_POST['phone_number']))
     {
-        $_SESSION['messages_ko'][] = 'Le champ téléphone est obligatoire !';
-        $result = false;
-    }
-    else
-    {
-        $_SESSION['order_inputs']['info']['phonenumber'] = $_POST['phonenumber'];
+        $_SESSION['order_inputs']['info']['phone_number'] = $_POST['phone_number'];
     }
 
     return $result;
@@ -49,15 +44,35 @@ function isInfoStepValid()
 function isAddressStepValid($address)
 {
     $result = true;
-    if (!isset($_POST['address']) || empty($_POST['address']))
+    if (!isset($_POST['first_name']) || empty($_POST['first_name']))
     {
-        $_SESSION['messages_ko'][] = 'Le champ adresse est obligatoire !';
+        $_SESSION['messages_ko'][] = 'Le champ nom est obligatoire !';
         $result = false;
-        $_SESSION['order_inputs'][$address]['address'] = '';
     }
     else
     {
-        $_SESSION['order_inputs'][$address]['address'] = $_POST['address'];
+        $_SESSION['order_inputs'][$address]['first_name'] = $_POST['first_name'];
+    }
+
+    if (!isset($_POST['last_name']) || empty($_POST['last_name']))
+    {
+        $_SESSION['messages_ko'][] = 'Le champ prénom est obligatoire !';
+        $result = false;
+    }
+    else
+    {
+        $_SESSION['order_inputs'][$address]['last_name'] = $_POST['last_name'];
+    }
+
+    if (!isset($_POST['street_name']) || empty($_POST['street_name']))
+    {
+        $_SESSION['messages_ko'][] = 'Le champ adresse est obligatoire !';
+        $_SESSION['order_inputs'][$address]['street_name'] = '';
+        $result = false;
+    }
+    else
+    {
+        $_SESSION['order_inputs'][$address]['street_name'] = $_POST['street_name'];
     }
 
     if (!isset($_POST['city']) || empty($_POST['city']))
@@ -70,14 +85,14 @@ function isAddressStepValid($address)
         $_SESSION['order_inputs'][$address]['city'] = $_POST['city'];
     }
 
-    if (!isset($_POST['postal-code']) || empty($_POST['postal-code']))
+    if (!isset($_POST['postal_code']) || empty($_POST['postal_code']))
     {
         $_SESSION['messages_ko'][] = 'Le champ code postale est obligatoire !';
         $result = false;
     }
     else
     {
-        $_SESSION['order_inputs'][$address]['postal-code'] = $_POST['postal-code'];
+        $_SESSION['order_inputs'][$address]['postal_code'] = $_POST['postal_code'];
     }
 
     if (isset($_POST['address-invoice']))
@@ -100,16 +115,52 @@ VALUES (:first_name, :last_name, :street_name, :complementary_address_1, :comple
     $query->execute([
         ':first_name' => $address['first_name'],
         ':last_name' => $address['last_name'],
-        ':street_name' => $address['address'],
-        ':complementary_address_1' => $address['additional-address'],
-        ':complementary_address_2' => $address['additional-address2'],
-        ':postal_code' => $address['postal-code'],
+        ':street_name' => $address['street_name'],
+        ':complementary_address_1' => $address['complementary_address_1'],
+        ':complementary_address_2' => $address['complementary_address_2'],
+        ':postal_code' => $address['postal_code'],
         ':city' => $address['city']
     ]);
 
     return $db->lastInsertId();
 }
+function verifyOrder()
+{
+    $db = dbConnect();
+    $query = $db->prepare('SELECT id, name, quantity, is_deleted FROM products where id=:product_id');
+    $cart_products = $_SESSION['cart'];
+    $is_valid = true;
+    foreach ($cart_products as $key => $value)
+    {
+        if ($key !== 'count')
+        {
+            $cart_product = $value['product'];
+            $query->execute(['product_id' => $cart_product['id']]);
+            $product = $query->fetch();
+            if ($product['is_deleted'] == 1)
+            {
+                $_SESSION['messages_ko'][] = 'Le produit '.$product['name'].'n\'est plus disponible à la vente';
+                $is_valid = false;
+            }
 
+            if ($product['quantity'] < $value['quantity'])
+            {
+                $_SESSION['messages_ko'][] = 'Le quantité du produit '.$product['name'].' restante en stock n\'est plus suffisante';
+                $is_valid = false;
+            }
+        }
+        else
+        {
+            if ($value == 0)
+            {
+                $_SESSION['messages_ko'][] = 'Aucun produit dans votre panier';
+                $is_valid = false;
+            }
+        }
+    }
+
+    return $is_valid;
+}
 function saveOrder()
 {
     include_once 'product.php';
@@ -132,14 +183,16 @@ function saveOrder()
         }
     }
 
-    $query = $db->prepare('INSERT INTO orders (user_id, email, phone_number, order_amount, delivery_amount, delivery_address_id, billing_address_id) 
-VALUES (:user_id, :email, :phone_number, :order_amount, :delivery_amount, :delivery_address_id, :billing_address_id)');
+    $query = $db->prepare('INSERT INTO orders (user_id, first_name, last_name, email, phone_number, order_amount, delivery_amount, delivery_address_id, billing_address_id) 
+VALUES (:user_id, :first_name, :last_name, :email, :phone_number, :order_amount, :delivery_amount, :delivery_address_id, :billing_address_id)');
 
     $info = $_SESSION['order_inputs']['info'];
     $query->execute([
-        ':user_id' => isset($_SESSION['user_id']) ? $_SESSION['user_id'] : null,
+        ':user_id' => $_SESSION['user_id'],
+        ':first_name' => $info['first_name'],
+        ':last_name' => $info['last_name'],
         ':email' => $info['email'],
-        ':phone_number' => $info['phonenumber'],
+        ':phone_number' => $info['phone_number'],
         ':order_amount' => $total * 100,
         ':delivery_amount' => '1000',
         ':delivery_address_id' => $addressDeliveryId,
@@ -165,10 +218,25 @@ VALUES (:order_id, :product_id, :quantity, :price, :name, :short_description)');
                 ':name' => $cart_product['name'],
                 ':short_description' => $cart_product['short_description']
             ]);
+
+            // Modifier la quantité dans le produit acheté
+            $update_product = $db->prepare('UPDATE products SET quantity = quantity - :quantity WHERE id=:product_id');
+            $update_product->execute([
+                ':product_id' => $cart_product['id'],
+                ':quantity' => $value['quantity'],
+            ]);
         }
     }
 
+    // réinitialiser les données de sessions
     unset($_SESSION['cart']);
+    unset($_SESSION['order_inputs']);
     $_SESSION['cart'] = array();
     $_SESSION['cart']['count'] = 0;
+    $_SESSION['order_inputs'] = array(
+        'info' => array('user_id' => '', 'first_name' => '', 'last_name' => '', 'email' => '', 'phone_number' => ''),
+        'delivery' => array('first_name' => '', 'last_name' => '', 'street_name' => '', 'complementary_address_1' => '', 'complementary_address_2' => '', 'city' => '', 'postal_code' => '', 'address-invoice' => true),
+        'invoice'  => array('first_name' => '', 'last_name' => '', 'street_name' => '', 'complementary_address_1' => '', 'complementary_address_2' => '', 'city' => '', 'postal_code' => '', 'address-invoice' => ''),
+        'payment' => array('name-on-card' => '','card-number' => '', 'expiry-date' => '', 'security-code' => '', 'save' => false)
+    );
 }

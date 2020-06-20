@@ -5,11 +5,11 @@
         <form method="post" action="index.php?p=useraccount&action=login">
             <div class="login-email">
                 <label for="email">Adresse Email *</label>
-                <input name="email" type="email" id="email">
+                <input required name="email" type="email" id="email">
             </div>
             <div class="login-password-name">
                 <label for="password">Mot de passe *</label>
-                <input name="password" type="password" id="password">
+                <input required name="password" type="password" id="password">
             </div>
             <div class="login-lost-password">
                 <a href="index.php?p=useraccount&action=lost">Mot de passe oublié</a>

@@ -18,10 +18,15 @@ if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
 if (empty($_SESSION['order_inputs']['info']['user_id']))
 {
     // sinon charger les données utilisateur de la base de donnée
+
     require_once 'models/user.php';
-    $user = getUserInfoById($_SESSION['user_id']);
+    $user = getUserById($_SESSION['user_id']);
     $_SESSION['order_inputs']['info'] = $user;
+    $_SESSION['order_inputs']['delivery'] = $user['delivery_address'];
+    $_SESSION['order_inputs']['invoice'] = $user['billing_address'];
     $_SESSION['order_inputs']['info']['user_id'] = $_SESSION['user_id'];
+
+    $_SESSION['order_inputs']['delivery']['address-invoice'] = $user['billing_address_id'] == null ? 1 : 0;
 }
 
 require_once 'models/order.php';
@@ -176,7 +181,15 @@ switch ($step)
         $steps[] = ['PAIEMENT', 'previous'];
         $steps[] = ['OK', 'current'];
         $sub_view = 'views/order/ok.php';
-        saveOrder();
+        if(verifyOrder())
+        {
+            saveOrder();
+        }
+        else
+        {
+            header('location:index.php?p=cart');
+            exit;
+        }
         break;
 }
 

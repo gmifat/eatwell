@@ -84,13 +84,6 @@
                 </header>
                 <main>
                     <?php require ('views/partials/alertMessages.php'); ?>
-                    <?php if (isset ($_SESSION['debug'])) : ?>
-                        <div class="alert alert-info" role="alert">
-                            <?php foreach ($_SESSION['debug'] as $message) : ?>
-                                <?= var_dump($message) ; ?><br>
-                            <?php endforeach; ?>
-                        </div>
-                    <?php endif; ?>
                     <?php include ($view); ?>
                 </main>
                 <footer  class="footer text-muted bg-info">

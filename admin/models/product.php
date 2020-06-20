@@ -271,7 +271,6 @@ is_home_page=:is_home_page, is_in_bulk=:is_in_bulk, discount=:discount, discount
             {
                 $new_file_name = $product_id . '.' . $my_file_extension;
                 $destination = '../assets/images/product/thumbnail/' . $new_file_name;
-                $_SESSION['debug'][] = $destination;
                 clearstatcache();
                 if(file_exists($destination)) {
                     unlink($destination);
@@ -300,8 +299,7 @@ is_home_page=:is_home_page, is_in_bulk=:is_in_bulk, discount=:discount, discount
         {
             return $result;
         }
-        $_SESSION['debug'][] = $_FILES[$input_name];
-
+		
         $allowed_extensions = array( 'jpg' , 'jpeg' , 'gif', 'png' );
         $my_file_extension = pathinfo( $_FILES[$input_name]['name'] , PATHINFO_EXTENSION);
 

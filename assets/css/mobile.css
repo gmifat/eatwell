@@ -1,0 +1,295 @@
+/* gestion d'affichage menu burger*/
+.trigger{
+    display: none;
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    margin: 0;
+    width: 22px;
+    height: 22px;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 100;
+}
+
+/**/
+.burger-menu
+{
+    display: none;
+}
+
+.close {
+    display: none;
+    width: 18px;
+    transition: opacity 0.6s 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 20;
+}
+/**/
+
+.close img {
+    width: 18px;
+    height: 18px;
+}
+
+.trigger:checked + nav > div > :nth-child(4) {
+    transform: none;
+}
+
+.trigger:checked + nav .close {
+    opacity: 1;
+}
+
+#cart-link-text
+{
+    display: none;
+}
+
+.breadcrumb-title
+{
+    display: none;
+}
+
+@media (max-width: 768px){
+
+    header > nav .form
+    {
+        display: none;
+    }
+
+    .gap
+    {
+        padding: 5px;
+    }
+
+    .row
+    {
+        flex-wrap: wrap;
+    }
+
+    #cart-link-text
+    {
+        display: block;
+    }
+
+    .product-images, .product-details-data, .product-item, .purpose-item, .information
+    {
+        flex : 0 0 100%;
+    }
+
+    .information
+    {
+        padding-left: 5px;
+    }
+
+    .links > a
+    {
+        flex: 0 0 25%;
+    }
+    .law-images
+    {
+        text-align: center;
+    }
+
+    input[type="number"]
+    {
+        width: 80px;
+    }
+
+    .trigger {
+        display: block;
+    }
+
+    .header-menu li:last-child > a > i{
+        display: none;
+    }
+
+    .header-menu {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        font-size: 24px;
+        /* pour centrer les éléments en enlève le padding-left */
+        padding-left: 0;
+        transform: translate(100%);
+        transition: transform 0.5s ease-in;
+        width: 100%;
+        height: 100%;
+		z-index: 15;
+    }
+
+    .header-menu > li
+    {
+        padding: 15px 0 15px 0;
+    }
+    .burger-menu, .close {
+        display: block;
+        position: fixed;
+        top: 15px;
+        right: 16px;
+        width: 18px;
+        height: 16px;
+        padding: 0;
+    }
+
+    .burger-menu{
+        position: absolute;
+    }
+
+    .breadcrumb-title
+    {
+        display: block;
+        position: absolute;
+        left: 15px;
+    }
+
+    .breadcrumb
+    {
+        margin-left: 120px;
+    }
+    .breadcrumb > ul
+    {
+        display: block;
+    }
+
+    .breadcrumb > ul > li + li:before{
+        content: none;
+        padding: 0 10px;
+    }
+
+    .select{
+        height:25px;
+        width:180px;
+        overflow:hidden;
+        background-color:#FFFFFF;
+        border:1px solid #CCCCCC;
+
+    }
+
+    .select:hover{
+        height:auto;
+    }
+
+    .select li{
+        height:20px;
+        line-height:20px;
+        padding-left:5px;
+    }
+
+    .select  li a:hover{
+        background-color:#EEEEFF;
+    }
+
+    .select li:first-child a:after{
+        content:' ';
+        background-image: url('https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/down4-24.png');
+        background-size:16px 16px;
+        background-position:center center;
+        background-repeat:no-repeat;
+        float:right;
+        height:20px;
+        width:20px;
+        text-align:center;
+        line-height:20px;
+    }
+
+    .shop-container
+    {
+        flex-direction: column;
+    }
+
+    .shop-container form
+    {
+        width: 100%;
+    }
+
+    .shop-filter
+    {
+        display: flex;
+        flex-direction: row;
+        align-items: stretch;
+        flex-wrap: wrap;
+        flex: 0 0 100%;
+        max-width: unset !important;
+        font-size: 14px;
+    }
+
+    .shop-filter > div >  h4
+    {
+        font-size: 16px;
+    }
+
+    .order-ok h2
+    {
+        font-size: 24px;
+    }
+
+
+    .cart-display
+    {
+        padding: 20px;
+        max-width: 450px;
+        margin: auto;
+    }
+    .cart-more-details
+    {
+        display: none !important;
+    }
+}
+
+
+@media (max-width: 375px){
+    .menu li:first-child
+    {
+        display: none;
+    }
+
+    .shop-filter
+    {
+        padding: 0;
+    }
+    .shop-filter > div
+    {
+        flex: 0 0 45%;
+        padding: 5px;
+    }
+
+    .shop-filter > div:last-child
+    {
+        flex: 0 0 100%
+    }
+
+    .order-header
+    {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 5px;
+        margin-bottom: 0;
+    }
+
+    .order-step-container {
+        flex: 0 0 40%;
+        margin-bottom: 5px;
+
+    }
+
+    .order-header hr {
+        display: none;
+    }
+
+    .order-header .order-step-container:last-child {
+
+        flex: 0 0 100%;
+    }
+
+    .order-container{
+        padding: 5px;
+    }
+
+}

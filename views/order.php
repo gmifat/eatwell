@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/order.css">
+
 <main class="order-cart">
     <form method="post" action="index.php?p=order&step=<?= $next_step; ?>">
         <div class="order-header">
@@ -27,4 +27,3 @@
         </div>
     </form>
 </main>
-<?php

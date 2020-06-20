@@ -194,7 +194,19 @@ if (isset($_GET['action']) && !empty($_GET['action']))
             $breadcrumb[] = '<a href="index.php">Accueil</a>';
             $breadcrumb[] = '<a href="index.php?p=shop">Boutique</a>';
             $breadcrumb[] = 'Panier';
+
+            foreach ($_SESSION['cart'] as $key => $item) {
+
+                if ($key != 'count') {
+
+                    $product = getLightProductById($key, false);
+                    $quantity = $_SESSION['cart'][$key]['quantity'];
+                    $_SESSION['cart'][$key] = ['product' => $product, 'quantity' => $quantity];
+                }
+            }
+
             $cart_products = $_SESSION['cart'];
+
             $view = 'views/cart.php';
             break;
         default:
@@ -209,6 +221,15 @@ else
     $breadcrumb[] = '<a href="index.php">Accueil</a>';
     $breadcrumb[] = '<a href="index.php?p=shop">Boutique</a>';
     $breadcrumb[] = 'Panier';
+    foreach ($_SESSION['cart'] as $key => $item) {
+
+        if ($key != 'count') {
+
+            $product = getLightProductById($key, false);
+            $quantity = $_SESSION['cart'][$key]['quantity'];
+            $_SESSION['cart'][$key] = ['product' => $product, 'quantity' => $quantity];
+        }
+    }
     $cart_products = $_SESSION['cart'];
     $view = 'views/cart.php';
 }

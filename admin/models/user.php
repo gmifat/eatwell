@@ -25,7 +25,7 @@
         return $result;
     }
 
-    function getUserById($id)
+    function getUserDataById($id)
     {
         $db = dbConnect();
         $query = $db->prepare('SELECT * FROM users WHERE id = :id');
@@ -39,23 +39,25 @@
         $db = dbConnect();
         if (empty($informations['password']))
         {
-            $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email, is_admin=:is_admin WHERE id=:id');
+            $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email, phone_number=:phone_number, is_admin=:is_admin WHERE id=:id');
             $result = $query->execute([
                 ':id' => $informations['id'],
                 ':first_name' => $informations['first_name'],
                 ':last_name' => $informations['last_name'],
                 ':email' => $informations['email'],
+                ':phone_number' => $informations['phone_number'],
                 ':is_admin' => $informations['is_admin'],
             ]);
         }
         else
         {
-            $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email, is_admin=:is_admin, password=:password WHERE id=:id');
+            $query = $db->prepare('UPDATE users SET first_name=:first_name, last_name = :last_name, email=:email, phone_number=:phone_number, is_admin=:is_admin, password=:password WHERE id=:id');
             $result = $query->execute([
                 ':id' => $informations['id'],
                 ':first_name' => $informations['first_name'],
                 ':last_name' => $informations['last_name'],
                 ':email' => $informations['email'],
+                ':phone_number' => $informations['phone_number'],
                 ':is_admin' => $informations['is_admin'],
                 ':password' => password_hash($informations['password'], PASSWORD_BCRYPT),
             ]);

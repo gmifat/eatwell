@@ -1,16 +1,16 @@
 <main class="main-policy">
     <section class="row">
         <article class="delete-item">
-            <h1>Gestion de mes informations personnelles</h1>
+            <h1>Formulaire de contact</h1>
             <div>
                 <div>
-                    <h2 class="delete-title">Demande de suppression de mes données personnelles</h2>
-                    <p class="delete-body">Dans le cadre de la loi RGPD, vous disposez de ce formulaire pour nous faire part de votre souhait de suppression de l'ensemble de vos données collectées par le biais de notre site internet.</p>
-                    <p class="delete-body">Nous procèderons à la suppression de l'ensemble de vos informations présent dans nos bases de données dans un délai d'un mois selon la législation en vigueur</p>
+                    <h2 class="delete-title">EatWell répond à vos questions sur tous les sujets !</h2>
+
+                    <p class="delete-body">Exprimez vous et donnez-nous un maximum de détails, merci de choisir la bonne rubrique pour que votre demande soit orienter au bon service</p>
                 </div>
                 <div class="delete-personal-form row">
                     <fieldset>
-                        <form method="POST" action="index.php?p=delete-data">
+                        <form method="POST" action="index.php?p=contact">
                             <div class="delete-form-container">
                                 <label for="last_name">Nom</label>
                                 <input required name="last_name" type="text" id="last_name">
@@ -25,11 +25,16 @@
                             </div>
                             <div class="delete-form-container">
                                 <label for="phone">Téléphone</label>
-                                <input required name="phone" type="text" id="phone">
+                                <input name="phone" type="text" id="phone">
                             </div>
                             <div class="row delete-form-container">
                                 <label for="subject">Sujet</label>
-                                <input required  style="color: #757575" name="subject" type="text" id="subject" value="Demande de suppression de mes données personnelles">
+                                <select required style="color: #757575" name="subject" type="text" id="subject">
+                                    <option value="order">Commande en ligne</option>
+                                    <option value="product">Information sur un produit</option>
+                                    <option value="order">Réclamation</option>
+                                    <option value="order">Autres demandes</option>
+                                </select>
                             </div>
                             <div class="row delete-form-container">
                                 <label for="message">Message</label>

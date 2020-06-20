@@ -10,6 +10,7 @@
                     <th class="" scope="col">Nom</th>
                     <th class="" scope="col">Prénom</th>
                     <th class="" scope="col">Email</th>
+                    <th class="" scope="col">Téléphone</th>
                     <th class="" scope="col">Admin</th>
                     <th class="width32" scope="col">Modifier</th>
                     <th class="width32">Supprimer</th>
@@ -23,6 +24,7 @@
                         <td class=""><?= $user['last_name']; ?></td>
                         <td class=""><?= $user['first_name']; ?></td>
                         <td class=""><?= $user['email']; ?></td>
+                        <td class=""><?= $user['phone_number']; ?></td>
                         <td class=""><img src="../assets/images/<?= $user['is_admin']; ?>.png"></td>
                         <td class="width32"><a href="index.php?controller=users&action=edit&id=<?= $user['id']; ?>"><img class="action-img" alt="Modifier" src="assets/images/edit.png" /></a></td>
                         <td class="width32"><a href="index.php?controller=users&action=delete&id=<?= $user['id']; ?>"><img class="action-img" alt="Supprimer" src="assets/images/delete.png" /></a></td>

@@ -1,7 +1,7 @@
 <?php
 session_start();
-
-/*session_unset();
+/*
+session_unset();
 session_destroy();
 session_reset();
 exit;*/
@@ -11,11 +11,10 @@ if(!isset($_SESSION['cart']))
 {
     $_SESSION['cart'] = array();
     $_SESSION['cart']['count'] = 0;
-
     $_SESSION['order_inputs'] = array(
-        'info' => array('user_id' => '', 'first_name' => '', 'last_name' => '', 'email' => '', 'phonenumber' => ''),
-        'delivery' => array('first_name' => '', 'last_name' => '', 'address' => '', 'additional-address' => '', 'additional-address2' => '', 'city' => '', 'postal-code' => '', 'address-invoice' => true),
-        'invoice'  => array('first_name' => '', 'last_name' => '', 'address' => '', 'additional-address' => '', 'additional-address2' => '', 'city' => '', 'postal-code' => '', 'address-invoice' => ''),
+        'info' => array('user_id' => '', 'first_name' => '', 'last_name' => '', 'email' => '', 'phone_number' => ''),
+        'delivery' => array('first_name' => '', 'last_name' => '', 'street_name' => '', 'complementary_address_1' => '', 'complementary_address_2' => '', 'city' => '', 'postal_code' => '', 'address-invoice' => true),
+        'invoice'  => array('first_name' => '', 'last_name' => '', 'street_name' => '', 'complementary_address_1' => '', 'complementary_address_2' => '', 'city' => '', 'postal_code' => '', 'address-invoice' => ''),
         'payment' => array('name-on-card' => '','card-number' => '', 'expiry-date' => '', 'security-code' => '', 'save' => false)
     );
 }
@@ -88,8 +87,4 @@ if(!isset($_SESSION['cart']))
 
     if (isset($_SESSION['old_inputs'])) {
         unset($_SESSION['old_inputs']);
-    }
-
-    if (isset($_SESSION['debug'])) {
-        unset($_SESSION['debug']);
     }

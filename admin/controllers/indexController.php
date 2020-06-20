@@ -48,10 +48,5 @@
 
     }
 
-    if(isset($_SESSION['user_id']) &&! empty($_SESSION['user_id']) && $_SESSION['user']['is_admin'] == 0)
-    {
-        $_SESSION['messages_ko'][] = 'Merci de vous connecter avec votre compte administrateur';
-    }
-
     $view = 'views/index.php';
     $pageTitle = 'Admin';

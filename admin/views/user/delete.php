@@ -19,6 +19,10 @@
             <td><?= $user['email'];?></td>
         </tr>
         <tr>
+            <th scope="row">Téléphone  :</th>
+            <td><?= $user['phone_number'];?></td>
+        </tr>
+        <tr>
             <th scope="row">Administrateur ? :</th>
             <td><img src="../assets/images/<?= $user['is_admin'];?>.png"></td>
         </tr>

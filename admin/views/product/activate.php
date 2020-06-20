@@ -1,6 +1,5 @@
 <?php ?>
 <h2><?= $pageTitle ?></h2>
-<?php var_dump($product);?>
 <form action="index.php?controller=products&action=activate" method="post"  enctype="multipart/form-data">
     <div class="form-group row">
         <input name="id" value="<?= $product['id'] ?>" type="hidden">
