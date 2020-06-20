@@ -6,7 +6,11 @@
 				<ul class="header-menu">
 					<li><a href="index.php?p=favorites"><i class="far fa-heart"></i></a></li>
 					<li>
-                        <a href="index.php?p=useraccount&action=<?= isset($_SESSION["user_id"]) && !empty($_SESSION["user_id"]) ? 'view' : 'login';?>"><i class="far fa-user-circle"></i></a>
+                        <?php if(!isset($_SESSION["user_id"]) || empty($_SESSION["user_id"])) : ?>
+                            <a href="index.php?p=useraccount&action=login"><i class="far fa-user-circle"></i></a>
+                        <?php else : ?>
+                            <a href="index.php?p=useraccount&action=view"><i class="far fa-user-circle"></i> Bienvenue <?= $_SESSION['user']['first_name'].' '.$_SESSION['user']['last_name'] ?></a>
+                        <?php endif; ?>
                     </li>
 					<li>
                         <a href="index.php?p=cart" data-cart="<?= $_SESSION['cart']['count'] ?>"><i class="fas fa-shopping-basket"></i></a>

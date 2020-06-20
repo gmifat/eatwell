@@ -8,10 +8,20 @@ if (isset($_GET['action']) && !empty($_GET['action']))
     switch($_GET['action'])
     {
         case 'new';
+            if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
+            {
+                header('location:index.php?p=useraccount&action=view');
+                exit;
+            }
             $breadcrumb[] = 'Créer votre compte';
             $view = 'views/create-account.php';
             break;
         case 'create';
+            if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
+            {
+                header('location:index.php?p=useraccount&action=view');
+                exit;
+            }
             include_once 'models/user.php';
             if (isValidUser($_POST))
             {
@@ -48,6 +58,11 @@ if (isset($_GET['action']) && !empty($_GET['action']))
             $tt = true;
             break;
         case 'login';
+            if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
+            {
+                header('location:index.php?p=useraccount&action=view');
+                exit;
+            }
             if (isset($_POST['email']) && !empty($_POST['email']))
             {
                 include_once 'models/user.php';
@@ -71,19 +86,29 @@ if (isset($_GET['action']) && !empty($_GET['action']))
         case 'disconnect';
             unset($_SESSION['user_id']);
             unset($_SESSION['user']);
-
             header('location:index.php?p=useraccount&action=login');
             exit;
             break;
 
         default:
-            header('location:index.php?p=useraccount');
+            if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
+            {
+                header('location:index.php?p=useraccount&action=login');
+                exit;
+            }
+            header('location:index.php?p=useraccount&action=view');
             exit;
             break;
     }
 }
 else
 {
+    if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
+    {
+        header('location:index.php?p=useraccount&action=login');
+        exit;
+    }
+
     $view = 'views/useraccount.php';
 }
 

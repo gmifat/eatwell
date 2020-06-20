@@ -28,4 +28,3 @@
     </div>
 </main>
 <hr>
-<?php

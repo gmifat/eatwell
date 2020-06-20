@@ -21,10 +21,11 @@
     <title>EatWell</title>
 </head>
 <body>
-<?php require ('views/partials/header.php'); ?>
+
 <?php
-include ($view);
+    require ('views/partials/header.php');
+    include ($view);
+    require ('views/partials/footer.php');
 ?>
-<?php require ('views/partials/footer.php'); ?>
 </body>
 </html>

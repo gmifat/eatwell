@@ -2,24 +2,24 @@
 function isInfoStepValid()
 {
     $result = true;
-    if (!isset($_POST['firstname']) || empty($_POST['firstname']))
+    if (!isset($_POST['first_name']) || empty($_POST['first_name']))
     {
         $_SESSION['messages_ko'][] = 'Le champ prénom est obligatoire !';
         $result = false;
     }
     else
     {
-        $_SESSION['order_inputs']['info']['firstname'] = $_POST['firstname'];
+        $_SESSION['order_inputs']['info']['first_name'] = $_POST['first_name'];
     }
 
-    if (!isset($_POST['lastname']) || empty($_POST['lastname']))
+    if (!isset($_POST['last_name']) || empty($_POST['last_name']))
     {
         $_SESSION['messages_ko'][] = 'Le champ nom est obligatoire !';
         $result = false;
     }
     else
     {
-        $_SESSION['order_inputs']['info']['lastname'] = $_POST['lastname'];
+        $_SESSION['order_inputs']['info']['last_name'] = $_POST['last_name'];
     }
 
     if (!isset($_POST['email']) || empty($_POST['email']))
@@ -94,12 +94,12 @@ function isAddressStepValid($address)
 
 function saveAddress($db, $address)
 {
-    $query = $db->prepare('INSERT INTO addresses (firstname, lastname, street_name, complementary_address_1, complementary_address_2, postal_code, city) 
-VALUES (:firstname, :lastname, :street_name, :complementary_address_1, :complementary_address_2, :postal_code, :city)');
+    $query = $db->prepare('INSERT INTO addresses (first_name, last_name, street_name, complementary_address_1, complementary_address_2, postal_code, city) 
+VALUES (:first_name, :last_name, :street_name, :complementary_address_1, :complementary_address_2, :postal_code, :city)');
 
     $query->execute([
-        ':firstname' => $address['firstname'],
-        ':lastname' => $address['lastname'],
+        ':first_name' => $address['first_name'],
+        ':last_name' => $address['last_name'],
         ':street_name' => $address['address'],
         ':complementary_address_1' => $address['additional-address'],
         ':complementary_address_2' => $address['additional-address2'],

@@ -1,52 +1,67 @@
 <?php
     session_start();
     require ('../helpers.php');
-
+    $controller = 'login';
     if (isset($_GET['controller']))
     {
-        switch ($_GET['controller'])
+        $controller = $_GET['controller'];
+    }
+
+    // Vérifier que le user est connecté et admin sinon redirection vers la page login
+    if ($controller !== 'login')
+    {
+        if(!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
         {
-            case 'categories':
-                require 'controllers/categoryController.php';
-                break;
-            case 'newsletters':
-                require 'controllers/newsletterController.php';
-                break;
-            case 'orders':
-                require 'controllers/orderController.php';
-                break;
-            case 'origins':
-                require 'controllers/originController.php';
-                break;
-            case 'products':
-                require 'controllers/productController.php';
-                break;
-            case 'promotions':
-                require 'controllers/promotionController.php';
-                break;
-            case 'recipes':
-                require 'controllers/recipeController.php';
-                break;
-            case 'review':
-                require 'controllers/reviewController.php';
-                break;
-            case 'sizes':
-                require 'controllers/sizeController.php';
-                break;
-            case 'units':
-                require 'controllers/unitController.php';
-                break;
-            case 'users':
-                require 'controllers/userController.php';
-                break;
-            default:
-                require 'controllers/indexController.php';
-                break;
+            $_SESSION['messages_ko'][] = 'Merci de vous connecter pour accéder à l\'admin';
+            header('location:index.php?controller=login');
+            exit;
+        }
+        else if ($_SESSION['user']['is_admin'] == 0)
+        {
+            $_SESSION['messages_ko'][] = 'Merci de vous connecter avec votre compte administrateur';
+            header('location:index.php?controller=login');
+            exit;
         }
     }
-    else
+
+    switch ($controller)
     {
-        require 'controllers/indexController.php';
+        case 'categories':
+            require 'controllers/categoryController.php';
+            break;
+        case 'newsletters':
+            require 'controllers/newsletterController.php';
+            break;
+        case 'orders':
+            require 'controllers/orderController.php';
+            break;
+        case 'origins':
+            require 'controllers/originController.php';
+            break;
+        case 'products':
+            require 'controllers/productController.php';
+            break;
+        case 'promotions':
+            require 'controllers/promotionController.php';
+            break;
+        case 'recipes':
+            require 'controllers/recipeController.php';
+            break;
+        case 'review':
+            require 'controllers/reviewController.php';
+            break;
+        case 'sizes':
+            require 'controllers/sizeController.php';
+            break;
+        case 'units':
+            require 'controllers/unitController.php';
+            break;
+        case 'users':
+            require 'controllers/userController.php';
+            break;
+        default:
+            require 'controllers/indexController.php';
+            break;
     }
 ?>
     <!doctype html>

@@ -13,9 +13,9 @@ if(!isset($_SESSION['cart']))
     $_SESSION['cart']['count'] = 0;
 
     $_SESSION['order_inputs'] = array(
-        'info' => array('firstname' => '', 'lastname' => '', 'email' => '', 'phonenumber' => ''),
-        'delivery' => array('firstname' => '', 'lastname' => '', 'address' => '', 'additional-address' => '', 'additional-address2' => '', 'city' => '', 'postal-code' => '', 'address-invoice' => true),
-        'invoice'  => array('firstname' => '', 'lastname' => '', 'address' => '', 'additional-address' => '', 'additional-address2' => '', 'city' => '', 'postal-code' => '', 'address-invoice' => ''),
+        'info' => array('user_id' => '', 'first_name' => '', 'last_name' => '', 'email' => '', 'phonenumber' => ''),
+        'delivery' => array('first_name' => '', 'last_name' => '', 'address' => '', 'additional-address' => '', 'additional-address2' => '', 'city' => '', 'postal-code' => '', 'address-invoice' => true),
+        'invoice'  => array('first_name' => '', 'last_name' => '', 'address' => '', 'additional-address' => '', 'additional-address2' => '', 'city' => '', 'postal-code' => '', 'address-invoice' => ''),
         'payment' => array('name-on-card' => '','card-number' => '', 'expiry-date' => '', 'security-code' => '', 'save' => false)
     );
 }

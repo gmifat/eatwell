@@ -12,12 +12,12 @@
                     <fieldset>
                         <form method="POST" action="deletion-personal-data.php">
                             <div class="delete-form-container">
-                                <label for="lastname">Nom</label>
-                                <input name="lastname" type="text" id="lastname">
+                                <label for="last_name">Nom</label>
+                                <input name="last_name" type="text" id="last_name">
                             </div>
                             <div class="delete-form-container">
-                                <label for="firstname">Prénom</label>
-                                <input name="firstname" type="text" id="firstname">
+                                <label for="first_name">Prénom</label>
+                                <input name="first_name" type="text" id="first_name">
                             </div>
                             <div class="delete-form-container">
                                 <label for="email">Email</label>

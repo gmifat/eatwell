@@ -3,12 +3,12 @@
     </h2>
     <hr>
     <div class="order-form-input">
-        <label for="firstname">Prénom *</label>
-        <input required name="firstname" type="text" id="firstname" value="<?= $_SESSION['order_inputs']['delivery']['firstname'] ?>">
+        <label for="first_name">Prénom *</label>
+        <input required name="first_name" type="text" id="first_name" value="<?= $_SESSION['order_inputs']['delivery']['first_name'] ?>">
     </div>
     <div class="order-form-input">
-        <label for="lastname">Nom *</label>
-        <input required name="lastname" type="text" id="lastname" value="<?= $_SESSION['order_inputs']['delivery']['lastname'] ?>">
+        <label for="last_name">Nom *</label>
+        <input required name="last_name" type="text" id="last_name" value="<?= $_SESSION['order_inputs']['delivery']['last_name'] ?>">
     </div>
     <div class="order-form-input">
         <label for="address">Adresse *</label>

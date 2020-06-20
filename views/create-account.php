@@ -4,13 +4,13 @@
         <h2>Créer votre compte</h2>
         <form method="post" action="index.php?p=useraccount&action=create">
             <div class="login-name">
-                <div class="login-first-name">
-                    <label for="first-name">Prénom *</label>
-                    <input required name="first-name" type="text" id="first-name" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['first-name'] : '' ?>">
+                <div class="login-first_name">
+                    <label for="first_name">Prénom *</label>
+                    <input required name="first_name" type="text" id="first_name" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['first_name'] : '' ?>">
                 </div>
-                <div class="login-last-name">
-                    <label for="last-name">Nom *</label>
-                    <input required name="last-name" type="text" id="last-name" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['last-name'] : '' ?>">
+                <div class="login-last_name">
+                    <label for="last_name">Nom *</label>
+                    <input required name="last_name" type="text" id="last_name" value="<?= isset($_SESSION['old_inputs']) ? $_SESSION['old_inputs']['last_name'] : '' ?>">
                 </div>
             </div>
             <div class="login-email">

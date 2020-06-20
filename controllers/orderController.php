@@ -7,6 +7,23 @@ if ($_SESSION['cart']['count'] == 0)
     exit;
 }
 
+if (!isset($_SESSION['user_id']) || empty($_SESSION['user_id']))
+{
+    $_SESSION['messages_ko'][] = 'Merci de se connecter ou de créer un compte pour passer votre commande.';
+    header('location:index.php?p=useraccount&action=login');
+    exit;
+}
+
+// Vérifier si on a des données dans la session
+if (empty($_SESSION['order_inputs']['info']['user_id']))
+{
+    // sinon charger les données utilisateur de la base de donnée
+    require_once 'models/user.php';
+    $user = getUserInfoById($_SESSION['user_id']);
+    $_SESSION['order_inputs']['info'] = $user;
+    $_SESSION['order_inputs']['info']['user_id'] = $_SESSION['user_id'];
+}
+
 require_once 'models/order.php';
 
 // Afficher le fil d'arianne
@@ -25,18 +42,6 @@ $can_cancel = true;
 switch ($step)
 {
     case 'info':
-        // Vérifier si on a des données dans la session
-        if (!isset($_SESSION['order_inputs']) && !isset($_SESSION['order_inputs']['info']))
-        {
-            // Si l'utilisateur est connecté chargé les donnée de la base
-            if (isset($_SESSION['user_id']) && !empty($_SESSION['user_id']))
-            {
-                require_once 'models/user.php';
-                $user = getUserInfoById($_SESSION['user_id']);
-                $_SESSION['order_inputs']['info'] = $user;
-            }
-        }
-
         $breadcrumb[] = 'Information';
         $steps[] = ['INFORMATION', 'current'];
         $steps[] = ['LIVRAISON', 'next'];

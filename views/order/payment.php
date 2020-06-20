@@ -9,7 +9,7 @@
         </div>
         <div class="payment-form-input">
             <label for="name-on-card">Nom sur la carte</label>
-            <input name="name-on-card" type="text" id="name-on-card" value="<?= $_SESSION['order_inputs']['info']['firstname'].' '.$_SESSION['order_inputs']['info']['lastname'] ?>">
+            <input name="name-on-card" type="text" id="name-on-card" value="<?= $_SESSION['order_inputs']['info']['first_name'].' '.$_SESSION['order_inputs']['info']['last_name'] ?>">
         </div>
         <div class="payment-form-input">
             <label for="card-number">Numéro de la carte</label>
