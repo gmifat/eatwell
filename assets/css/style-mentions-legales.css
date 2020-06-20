@@ -1,0 +1,35 @@
+/*.theme{
+    height: 50px;
+    border: none;
+    background-image: url("assets/images/fruit.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+}*/
+
+.main-policy {
+    background-color: #f5f5f5;
+    font-family: 'Lato', sans-serif;
+    color:  #333333;
+    line-height: 1.5;
+}
+h1 {
+    color:     #a19885;
+    font-size: 1.5em;
+}
+.mention-title {
+    font-size: 1.17em;
+    text-align: left;
+    color: #b68b65;
+}
+.item {
+    max-width: 960px;
+    margin: auto;
+}
+.section-item {
+
+}
+.section-item > p {
+    text-align: justify;
+    margin: 15px;
+}

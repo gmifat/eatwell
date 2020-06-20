@@ -13,5 +13,13 @@ function dbConnect()
     return $db;
 }
 
+function getVarOutput($var)
+{
+    ob_start();
+    var_dump($var);
+    $result = ob_get_clean();
+    $_SESSION['messages_ko'][] = $result;
+}
+
 //la fonction die arrête le script et peut afficher un message
 //le catch n’est appelé que si une erreur survient au try

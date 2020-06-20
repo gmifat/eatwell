@@ -1,0 +1,84 @@
+.shop-header
+{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 15px;
+}
+
+.shop-header div
+{
+    width: auto;
+    display: flex;
+}
+
+.shop-header-label
+{
+    margin: 0 10px 0 20px;
+}
+
+.shop-container
+{
+    display: flex;
+    align-items: flex-start;
+}
+
+.shop-filter
+{
+    flex: 0 0 25%;
+    padding: 15px;
+    max-width: 270px;
+}
+
+.shop-products
+{
+    /*background-color: #f5f5f5;*/
+    flex: 0 0 75%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+
+.shop-filter > div
+{
+    border: #bdbdbd 1px solid ;
+    padding: 15px 5px 15px 5px;
+}
+
+.shop-filter > div > h4
+{
+    color: #212121;
+    font-size: 20px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.shop-filter-category a
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.shop-filter-button {
+    width: 90%;
+    margin-left: 5%;
+    padding: 10px 5px 10px 5px;
+    background-color: #008CBA;
+    color: white;
+    border-radius: 5px;
+    border: white 2px solid;
+    font-weight: 300;
+    cursor: pointer;
+}
+
+.shop-filter-button:hover{
+    background-color: white;
+    color: #008CBA;
+    border-color: #008CBA;
+    font-weight: 700;
+}
+
+.shop-filter-button > i{
+    margin-right: 5px;
+}

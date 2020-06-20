@@ -33,6 +33,10 @@
         </select><br>
     </div>
     <div class="form-group row">
+        <label class="col-sm-2" for="quantity">Quantité</label>
+        <input class="col-sm-10" type="input" class="form-control" id="quantity" name="quantity" value="<?= $product['quantity']; ?>">
+    </div>
+    <div class="form-group row">
         <label class="col-sm-2" for="price">Prix</label>
         <input class="col-sm-10" type="input" class="form-control" id="price" name="price" value="<?= $product['price']; ?>">
     </div>
@@ -101,8 +105,8 @@
                     <label class="form-check-label" for="is_home_page">Est visible sur la page d'acceuil ?</label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="is_available" name="is_available" value="is_available" <?= $product['is_available'] == 1 ? 'checked' : ''; ?>>
-                    <label class="form-check-label" for="is_available">Est disponible ?</label>
+                    <input class="form-check-input" type="checkbox" id="is_in_bulk" name="is_in_bulk" value="is_in_bulk" <?= $product['is_in_bulk'] == 1 ? 'checked' : ''; ?>>
+                    <label class="form-check-label" for="is_in_bulk">Est en vrac ?</label>
                 </div>
             </div>
         </div>

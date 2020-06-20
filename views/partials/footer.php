@@ -4,11 +4,14 @@
 			<h2>Newsletter</h2>
 			<hr class="separator">
 			<p class="row newsletter-info">Recevez avant tout le monde les dernières nouveautés<br> et nos offres exclusives!</p>
-			<div class="row newsletter-manip">
-				<input class="newsletter-input" value="Email">
-				<button class="newsletter-button">INSCREVEZ VOUS</button>
-			</div>
-		</div>
+            <form action="index.php?p=newsletter" method="post">
+                <div class="row newsletter-manip">
+				    <input required name="email" type="email" class="newsletter-input" placeholder="Votre adresse email">
+				    <button class="newsletter-button">INSCRIVEZ VOUS</button>
+			    </div>
+            </form>
+
+        </div>
 		<div class="row informations">
 			<ul class="information">
                 <li>
@@ -23,13 +26,13 @@
 			</ul>
 			<ul class="information">
                 <li>
-                    <a href="#">Mention legal</a>
+                    <a href="index.php?p=legal">Mentions légales</a>
                 </li>
 				<li>
-                    <a href="#">Politique de confidentialité</a>
+                    <a href="index.php?p=privacy">Politique de confidentialité</a>
                 </li>
 				<li>
-				    <a href="#">Politique de paiements</a>
+				    <a href="#">Informations Livraison</a>
                 </li>
 			</ul>
             <ul class="information">
@@ -55,9 +58,9 @@
 		</div>
 		<hr class="footer-separator">
 		<div class="row links">
-			<a class="link" href="#">Accueil</a>
-			<a class="link" href="#">Produits</a>
-			<a class="link" href="#">A propos</a>
-			<a class="link" href="#">Contact</a>
+			<a class="link" href="index.php">Accueil</a>
+			<a class="link" href="index.php?p=shop">Produits</a>
+			<a class="link" href="index.php?p=about">A propos</a>
+			<a class="link" href="index.php?p=contact"">Contact</a>
 		</div>
 	</footer>

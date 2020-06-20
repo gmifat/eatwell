@@ -33,12 +33,16 @@
         <td><?= $product['long_description'];?></td>
     </tr>
     <tr>
+        <th scope="row">Quantité :</th>
+        <td><?= $product['quantity'];?></td>
+    </tr>
+    <tr>
         <th scope="row">Prix  :</th>
-        <td><?= ($product['price'] / 100). '€';?></td>
+        <td><?= ($product['price'] / 100). ' €';?></td>
     </tr>
     <tr>
         <th scope="row">Prix unitaire :</th>
-        <td><?= ($product['unit_price'] / 100). '€ / '. $product['unit_name'];?></td>
+        <td><?= ($product['unit_price'] / 100). ' € / '. $product['unit_name'];?></td>
     </tr>
     <tr>
         <th scope="row">Nouveau ?</th>
@@ -49,8 +53,8 @@
         <td><img src="../assets/images/<?= $product['is_home_page']; ?>.png"></td>
     </tr>
     <tr>
-        <th scope="row">Disponible ?</th>
-        <td><img src="../assets/images/<?= $product['is_available']; ?>.png"></td>
+        <th scope="row">En vrac ?</th>
+        <td><img src="../assets/images/<?= $product['is_in_bulk']; ?>.png"></td>
     </tr>
     <tr>
         <th scope="row">Remise ?</th>

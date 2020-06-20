@@ -1,0 +1,228 @@
+.order-header, .order-action
+{
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    align-content: center;
+    justify-content: space-between;
+    flex-direction: row;
+    height: 30px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 15px;
+}
+
+.order-action
+{
+    justify-content: center;
+}
+
+.order-action > .cart-product-add, .cart-product-remove
+{
+    flex-grow: 0;
+    padding: 10px 20px 10px 20px;
+    height: 44px;
+}
+
+.order-header hr
+{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    right: 20px;
+    background-color: #616161;
+    border-width: 3px;
+    z-index: 1;
+}
+
+.order-step-container
+{
+    flex: 0 0 17%;
+    text-align: center;
+    z-index: 2;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+.order-step
+{
+    padding : 8px;
+    flex-grow: 1;
+}
+
+/*
+.order-current-step
+,
+.order-step
+{
+    color: #616161;
+    background-color: white;
+    border-color: #616161;
+    border-width: 2px 0 2px 0;
+    border-style: solid;
+}
+*/
+
+.half-circle-left, .half-circle-right {
+    display: inline-block;
+    background-color: #65b68b;
+    height: 40px;
+    width: 20px;
+}
+
+.half-circle-left {
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.half-circle-right {
+    border-bottom-right-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+.current
+{
+    background-color: #65b68b;
+    color: #f8f8f8;
+}
+
+.previous
+{
+    color: #616161;
+    background-color: #f5f5f5;
+}
+
+.next
+{
+    color: #616161;
+    background-color: #f5f5f5;
+    /*border-color: #616161;
+    border-width: 2px 0 2px 0;
+    border-style: solid;*/
+}
+
+.order-container
+{
+    padding: 15px;
+}
+
+.order-container h2
+{
+    color : #616161;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.order-container hr
+{
+    border: 1px #bdbdbd solid;
+}
+
+
+.order-form-input
+{
+    display: flex;
+    margin: 20px 0 20px 0;
+}
+
+.order-form-input label
+{
+    color: #616161;
+    font-size: 15px;
+    flex: 0 0 20%;
+}
+
+.order-form-input input
+{
+    flex: 0 0 80%;
+    background-color: #f5f5f5;
+    border: 1px #616161 solid;
+    border-radius: 10px;
+    padding-left: 15px;
+    height: 25px;
+}
+
+.order-form-input-check
+{
+    margin-left: 15px;
+}
+
+
+.payment-container
+{
+    max-width: 400px;
+}
+
+.payment-form-input-row
+{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 0;
+}
+
+/**/
+.payment-form-input label, .payment-form-input-row > div > label
+{
+    color: #616161;
+    font-size: 15px;
+    flex: 0 0 20%;
+}
+
+.payment-form-input-row > div
+{
+    flex: 0 0 50%;
+    display: flex;
+    flex-direction: column;
+}
+/**/
+
+.payment-form-input
+{
+    display: flex;
+    flex-direction: column;
+}
+.payment-card > img
+{
+    margin: 15px 0px 15px 0;
+    width: auto;
+    height: 35px;
+}
+
+.payment-card p
+{
+    padding-bottom: 15px;
+}
+
+.payment-card p > span
+{
+    font-size: 18px;
+    color: #616161;
+    font-weight: 700;
+}
+
+.order-ok h2
+{
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 35px;
+}
+
+.order-ok h4
+{
+    color: #616161;
+    font-size: 16px;
+    margin-bottom: 25px;
+}
+
+.order-ok img
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 450px;
+}

@@ -1,0 +1,9 @@
+.product-details
+{
+
+}
+
+.similar-products .row
+{
+    justify-content: flex-start;
+}

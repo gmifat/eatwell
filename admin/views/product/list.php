@@ -16,11 +16,12 @@
                     <th class="" scope="col">Nom</th>
                     <!--<th class="" scope="col">Description</th>-->
                     <th class="" scope="col">Catégorie</th>
+                    <th class="" scope="col">Quantité</th>
                     <th class="" scope="col">Prix</th>
                     <th class="" scope="col">Prix unitaire</th>
                     <th class="" scope="col">Nouveau ?</th>
                     <th class="" scope="col">Accueil ? </th>
-                    <th class="" scope="col">Disponible ?</th>
+                    <th class="" scope="col">En vrac ?</th>
                     <th class="" scope="col">Remise</th>
                     <th class="" scope="col">Type de remise</th>
                     <th class="width32" scope="col">Modifier</th>
@@ -36,11 +37,12 @@
                         <td class=""><a href="index.php?controller=products&action=view&id=<?= $product['id']; ?>"><?= $product['name']; ?></a></td>
 <!--                        <td class=""><?= $product['short_description']; ?></td>-->
                         <td class=""><?= $product['category_name']; ?></td>
+                        <td class=""><?= $product['quantity']; ?></td>
                         <td class=""><?= ($product['price'] / 100). ' €'; ?></td>
                         <td class=""><?= ($product['unit_price'] / 100) . ' €'; ?></td>
                         <td class=""><img src="../assets/images/<?= $product['is_new']; ?>.png"></td>
                         <td class=""><img src="../assets/images/<?= $product['is_home_page']; ?>.png"></td>
-                        <td class=""><img src="../assets/images/<?= $product['is_available']; ?>.png"></td>
+                        <td class=""><img src="../assets/images/<?= $product['is_in_bulk']; ?>.png"></td>
                         <td class="">
                             <?php
                             if($product['discount_type_code'] != null) {

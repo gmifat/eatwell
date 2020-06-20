@@ -1,4 +1,3 @@
-    <?php var_dump($newProducts); ?>
 	<main>
 		<section class="carousel">
 			<div class="carousel-items">
@@ -60,29 +59,23 @@
 			<h2>Nouveautés</h2>
 			<hr class="separator">
 			<div class="row">
-                <?php foreach ($newProducts as $newProduct): ?>
-                    <div class="gap product-item">
-                        <div class="product-item-container">
-                            <div class="product-thumbnail-container">
-                                <div>
-                                    <a href="#" class="favorite"><img src="assets/images/heart.png"></a>
-                                </div>
-                                <img class="product-thumbnail" src="assets/images/product/thumbnail/<?= $newProduct['thumbnail'] ;?>" alt="detox">
-                            </div>
-                            <div class="product-item-info">
-                                <p class="product-item-name"><?= $newProduct['short_description'] ;?></p>
-                                <div class="product-item-details">
-                                    <span class="product-item-price"><?= ($newProduct['price'] / 100).' €' ;?></span><br>
-                                    <div class="product-item-promo"><?= $newProduct['discount'].' '. $newProduct['symbol'] ;?></div><br>
-                                    <div class="product-item-reviews">*****</div><br>
-                                    <div  class="product-item-add">
-                                        <button><i class="fas fa-shopping-basket"></i>Ajouter au panier</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                <?php endforeach; ?>
+                <?php foreach ($newProducts as $product)
+                {
+                    include './views/partials/product.php';
+                }
+                ?>
+                <script src="./assets/js/cart.js"></script>
+                <script type="text/javascript">
+
+                    // Accédez à l'élément form …
+                    let forms = document.getElementsByClassName("form-inline");
+                    Array.prototype.forEach.call(forms, function(form) {
+                        form.addEventListener("submit", function (event) {
+                            event.preventDefault();
+                            setCartProduct(event);
+                        })
+                    });
+                </script>
             </div>
 		</section>
 		<section class="bio-logo">

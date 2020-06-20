@@ -17,14 +17,34 @@ h2 {
     display: flex;
     justify-content: space-between;
 }
-.row > *{
-    padding: 15px;
-}
-.gap {
 
+.alert {
+    position: relative;
+    padding: .75rem 1.25rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    text-align: center;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
 }
 
 /*******header*******/
+header > nav
+{
+    padding-top: 8px;
+}
 .header-menu {
     text-align: right;
     margin: 0;
@@ -66,6 +86,42 @@ a:hover {
 .find-form {
     text-align: right;
 }
+
+/* panier */
+.header-menu > li:last-child > a
+{
+    position: relative;
+}
+
+[data-cart]:after {
+    content: attr(data-cart);
+    position: absolute;
+    top: 30%;
+    left: 70%;
+    display: inline-block;
+    text-align: center;
+    background: #f28f19;
+    font-size: .6rem;
+    color: #fff;
+    line-height: 1.2;
+    min-width: 1.3em;
+    padding: .25em .35em;
+    border-radius: 8px;
+}
+/****breadcrumb****/
+.breadcrumb
+{
+}
+.breadcrumb > ul
+{
+    display: flex;
+}
+
+.breadcrumb > ul > li + li:before{
+    content: " > ";
+    padding: 0 10px;
+}
+/****fin breadcrumb****/
 
 /*******carousel*******/
 .carousel{
@@ -191,73 +247,7 @@ h2{
 /*******fin pourquoi nos produits******/
 
 /*******Nouveautés******/
-/*****affichage d'un produit*****/
-.product-item-container{
-    display: flex;
-    flex-direction: column;
-    border: 1px solid #e0e0e0;
-    padding: 10px;
-    border-radius: 5px;
-    height: 100%;
-    width: 100%;
-}
-.product-item {
 
-}
-.product-thumbnail {
-    width: 100%;
-}
-
-.product-thumbnail-container {
-    flex-grow: 0;
-}
-
-.product-item-info {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    flex-grow: 1;
-}
-
-.favorite img{
-    color: #b66590;
-    width:auto;
-   }
-.product-item-name {
-    font-size: 17px;
-}
-.product-thumbnail-container > div {
-    /*52px = 15 padding *2 + 10 padding * 2 + border * 2*/
-    width: calc(33.33% - 52px);
-    max-width: 268px;
-    position: absolute;
-    z-index: 15;
-    text-align: right;
-    padding: 15px 15px 0 0;
-}
-
-.product-item-price, .product-item-promo {
-    width: 100%;
-    padding: 10px;
-}
-.product-item-add {
-    width: 100%;
-    text-align: center;
-    padding-bottom: 5px;
-}
-
-
-.product-item-add button {
-    width: 80%;
-    padding: 5px;
-    background-color: #65b68b;
-    color: #f8f8f8;
-    border-radius: 5px;
-    border: #f8f8f8 1px solid;
-}
-.product-item-add button i {
-    margin-right: 15px;
-}
 /**********les logos BIO ***********/
 .bio-logo {
     background-color: #f8f8f8;
