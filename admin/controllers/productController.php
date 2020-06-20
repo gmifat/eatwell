@@ -36,7 +36,6 @@
             break;
         case 'new':
             //formulaire vide
-            // catégorie feuille uniquement
             $categories = getAllCategories();
             $units = getAllUnits();
             $sizes = getAllSizes();

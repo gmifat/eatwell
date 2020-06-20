@@ -20,8 +20,8 @@
                 <?php if (isset($categories)) :?>
                     <?php foreach ($categories as $category) :?>
                         <tr>
-                            <td class="width96"><img class="width96" src="../assets/images/category/icon/<?= !empty($category['icon']) ? $category['icon'] :  'no_image.PNG' ?>"/></td>
-                            <td class="width32"><img class="width32" src="../assets/images/category/thumbnail/<?= !empty($category['thumbnail']) ? $category['thumbnail'] :  'no_image.PNG' ?>"/></td>
+                            <td class="width96"><img class="width96" src="../assets/images/<?= !empty($category['icon']) ? 'category/icon/'.$category['icon'] :  'no_image.PNG' ?>"/></td>
+                            <td class="width32"><img class="width32" src="../assets/images/<?= !empty($category['thumbnail']) ? 'category/thumbnail/'.$category['thumbnail'] :  'no_image.PNG' ?>"/></td>
                             <td class=""><a href="index.php?controller=categories&action=view&id=<?= $category['id']; ?>"><?= $category['name']; ?></a></td>
                             <td class=""><?= $category['description']; ?></td>
                             <td style="background-color: <?= $category['color']; ?>;"><?= $category['color']; ?></td>

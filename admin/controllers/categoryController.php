@@ -31,7 +31,7 @@
             break;
 
         case 'new':
-            $categories = getAllCategories();
+            $categories = getAllParentCategories();
             $pageTitle = 'Ajouter une catégorie';
             $view = 'views/category/add.php';
             break;
@@ -79,7 +79,8 @@
                     exit;
                 }
 
-                $categories = getAllCategories($_GET['id']);
+                $categories = getAllParentCategories($_GET['id']);
+                $child = getChild($_GET['id']);
                 $pageTitle = 'Modifier une catégorie';
                 $view = 'views/category/edit.php';
             }
