@@ -119,6 +119,17 @@ ORDER BY category.name, product.name");
             $_SESSION['messages_ko'][] = 'La vignette de la catégorie est obligatoire !';
             $return = false;
         }
+        else if($_FILES['thumbnail']['size'] > 2097152)
+        {
+            $_SESSION['messages_ko'][] = 'La taille de la vignette ne doit dépasser la taille de 2M !';
+            $return = false;
+        }
+
+        if (isset($_FILES['icon']) && !empty($_FILES['icon']['name']) && $_FILES['icon']['size'] > 2097152)
+        {
+            $_SESSION['messages_ko'][] = 'La taille de l\'icône ne doit dépasser la taille de 2M !';
+            $return = false;
+        }
 
         // si les données sont valides, on vérifie que ce n'est pas un doublon
         if ($return)
